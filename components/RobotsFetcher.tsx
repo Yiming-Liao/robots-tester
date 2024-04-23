@@ -33,19 +33,28 @@ function RobotsFetcher() {
     };
 
     return (
-        <div>
+        <>
             <input
+                className='w-1/4 h-10 text-lg border-2 border-gray-600 rounded-xl mb-10 p-2'
                 type="text"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder="輸入 URL (e.g., https://example.com)"
+
             />
-            <button onClick={fetchRobots} disabled={loading}>
-                {loading ? 'Loading...' : 'Fetch Robots.txt'}
-            </button>
-            {robotsContent && <pre className='text-sm'>{robotsContent}</pre>}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-        </div>
+            <button
+                className='w-24 h-10 text-lg border-2 border-gray-600 rounded-xl mb-10 font-bold'
+                onClick={fetchRobots}
+                disabled={loading}
+            >
+                {loading ? 'Loading...' : '開始'}
+            </button >
+            <div className='w-1/4 min-w-fit min-h-96 rounded-lg bg-slate-200 p-3'>
+                {robotsContent && <pre className='text-sm'>{robotsContent}</pre>
+                }
+                {error && <p style={{ color: 'red' }}>{error}</p>}
+            </div>
+        </>
     );
 }
 
